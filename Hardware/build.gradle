@@ -1,0 +1,13 @@
+apply plugin: 'cpp'
+
+task compileMSP(type:Exec){
+    doFirst {
+        assert file("./main.c").exists()
+    }
+
+    commandLine 'sh', './scripts/compile.sh', 'main'
+}
+
+task programMSP(type:Exec){
+
+}
