@@ -1,6 +1,39 @@
 Holiday Hacking
 ===============
 
+Dependencies
+============
+* Java SE8
+* Groovy 2.4
+* msp430-gcc
+* msp430-libc,
+* msp430-binutils
+* mspdebug
+* (Optional) Gradle 2.7
+
+Hardware
+========
+* A computer
+* MSP430 Launchpad
+
+Setup
+=====
+To install the msp430 dependencies, use the following command in terminal.
+```sh
+$ sudo apt-get install binutils-msp430 gcc-msp430 msp430-libc mspdebug
+```
+
+##Compile and run the Server application
+
+```Groovy
+./gradlew Server:run
+```
+
+##Compile and run the Client application
+
+```Groovy
+./gradlew Client:run
+```
 
 LICENSE
 =======
