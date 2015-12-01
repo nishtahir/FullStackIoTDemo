@@ -1,11 +1,27 @@
 apply plugin: 'cpp'
 
-task compileMSP(type:Exec){
-    doFirst {
-        assert file("./main.c").exists()
-    }
+def sourceFile = 'main'
 
-    commandLine 'sh', './scripts/compile.sh', 'main'
+task compileSource(type:Exec){
+    doFirst {
+        assert file("./${sourceFile}.c").exists()
+    }
+    //Make compile.sh excutable using chmod +x
+    commandLine 'sh', '-c', "./scripts/compile.sh ${sourceFile}"
+}
+
+/**
+* Works on Ubuntu
+*/
+task checkMSP << {
+  new ByteArrayOutputStream().withStream { os ->
+      def result = exec {
+          executable = 'lsusb'
+          standardOutput = os
+      }
+      //Check that MSP430 is connected Via USB
+      assert os.toString().contains('0451:f432')
+  }
 }
 
 task programMSP(type:Exec){
