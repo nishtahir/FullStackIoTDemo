@@ -1,6 +1,7 @@
 Holiday Hacking
 ===============
 
+A small project hacked together to show Client, Server and Embedded device interaction. Build scripts are currently designed to work with Unix systems (Tested on Ubuntu 15). Your mileage may vary on other systems. 
 
 Dependencies
 ============
@@ -35,10 +36,9 @@ Setup
 Usage
 =====
 
-Check that your MSP430 is properly connected using
-
+Program your device using. By default, `main.c` is compiled and programmed on to the MSP430
 ```sh
-./gradlew checkMSP
+./gradlew program
 ```
 
 Start the server using
