@@ -1,7 +1,8 @@
 apply plugin: 'groovy'
 
-task run (dependsOn: 'classes', type: JavaExec) {
-    main = 'Server'
+task runServer (dependsOn: 'classes', type: JavaExec) {
+    description = 'launch the application'
+    main = 'package com.nishtahir.holidayhacking.Server'
     classpath = sourceSets.main.runtimeClasspath
 }
 

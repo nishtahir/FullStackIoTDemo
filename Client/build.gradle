@@ -1,6 +1,8 @@
 apply plugin: 'groovy'
 
-task run (dependsOn: 'classes', type: JavaExec) {
+
+task runClient (dependsOn: 'classes', type: JavaExec) {
+    description = 'launch the application'
     main = 'com.nishtahir.holidayhacking.client.Client'
     classpath = sourceSets.main.runtimeClasspath
 }

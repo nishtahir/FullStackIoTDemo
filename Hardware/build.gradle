@@ -2,7 +2,8 @@ apply plugin: 'cpp'
 
 def sourceFile = 'main'
 
-task compileSource(type:Exec){
+task compile(type:Exec){
+    description = "Compile ${sourceFile}.c"
     doFirst {
         assert file("./${sourceFile}.c").exists()
     }
@@ -10,13 +11,14 @@ task compileSource(type:Exec){
     commandLine 'sh', '-c', "./scripts/compile.sh ${sourceFile}"
 }
 
+
 /**
 *  Check to make sure that the MSP430 is connected
 *  by checking for the device id -
 *  ID 0451:f432 Texas Instruments, Inc. eZ430 Development Tool
 *  using lsusb
 */
-task checkMSP << {
+task check << {
   new ByteArrayOutputStream().withStream { os ->
       def result = exec {
           executable = 'lsusb'
@@ -27,7 +29,12 @@ task checkMSP << {
   }
 }
 
-task programMSP(type:Exec){
+/**
+*  Attempt to program the board using the compiled elf file
+*  A
+*/
+task program(type:Exec){
+    description = 'Compiles main.c, detects, connected MSP430 and programs the board'
   doFirst {
     assert file("./${sourceFile}.elf").exists()
   }
@@ -35,6 +42,6 @@ task programMSP(type:Exec){
   commandLine 'sh', '-c', "./scripts/program.exp ${sourceFile}.elf"
 }
 
-programMSP.dependsOn {
-  [compileSource, checkMSP]
+program.dependsOn {
+  [compile, check]
 }

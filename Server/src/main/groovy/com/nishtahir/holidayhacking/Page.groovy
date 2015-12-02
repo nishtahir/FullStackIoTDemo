@@ -1,3 +1,5 @@
+package com.nishtahir.holidayhacking;
+
 import groovy.xml.MarkupBuilder;
 
 class Page {
