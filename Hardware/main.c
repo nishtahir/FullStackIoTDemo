@@ -1,4 +1,4 @@
-#include <msp430.h> 
+#include <msp430.h>
 
 #define LED1	BIT0
 #define LED2	BIT6
@@ -47,7 +47,10 @@ int main(void) {
 	P1OUT &= ~(LED1 + LED2);
 
 	__enable_interrupt();
-	__bis_SR_register(LPM0 | GIE);
+	// For some reason msp430-gcc gives this
+	// main.c:50:2: error: void value not ignored as it ought to be
+	// __bis_SR_register(LPM0 | GIE);
+
 }
 
 #pragma vector=USCIAB0RX_VECTOR
