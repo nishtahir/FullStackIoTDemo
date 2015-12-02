@@ -11,7 +11,10 @@ task compileSource(type:Exec){
 }
 
 /**
-* Works on Ubuntu
+*  Check to make sure that the MSP430 is connected
+*  by checking for the device id -
+*  ID 0451:f432 Texas Instruments, Inc. eZ430 Development Tool
+*  using lsusb
 */
 task checkMSP << {
   new ByteArrayOutputStream().withStream { os ->
@@ -25,5 +28,13 @@ task checkMSP << {
 }
 
 task programMSP(type:Exec){
+  doFirst {
+    assert file("./${sourceFile}.elf").exists()
+  }
+  //Make compile.sh excutable using chmod +x
+  commandLine 'sh', '-c', "./scripts/program.exp ${sourceFile}.elf"
+}
 
+programMSP.dependsOn {
+  [compileSource, checkMSP]
 }

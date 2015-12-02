@@ -1,0 +1,18 @@
+#!/usr/bin/expect -f
+set timeout 10
+set file [lindex $argv 0]
+
+if {[llength $argv] == 0} {
+  send_user "Usage: scriptname \'file\'\n"
+  exit 1
+}
+
+spawn mspdebug rf2500
+expect "(mspdebug)"
+
+send "erase\r"
+expect "(mspdebug)"
+send "prog $file\r"
+
+expect "(mspdebug)"
+exit 0

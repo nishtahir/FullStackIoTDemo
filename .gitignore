@@ -104,3 +104,10 @@ gradle-app.setting
 
 # Cache of project
 .gradletasknamecache
+
+# =========== Texas Instruments =========== #
+/*.xdchelp
+/.config
+/.launches
+/Debug
+/Release
