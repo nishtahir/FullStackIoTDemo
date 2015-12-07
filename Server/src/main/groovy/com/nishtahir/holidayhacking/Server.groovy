@@ -9,10 +9,13 @@ import static spark.Spark.*;
 class Server {
 
     static main(args) {
-        get '/', { req, res -> Page.createPage(req.queryMap().toMap()) }
-        get '/dispatch', { req, res -> Page.createPage(req.queryMap().toMap()) }
+        staticFileLocation("/public")
 
-        get '/messages', { req, res -> Page.newestMessage.toString() }
+        get '/', { req, res -> res.redirect("/index.html") }
+        get '/api', { req, res -> println req }
+        // get '/dispatch', { req, res -> Page.createPage(req.queryMap().toMap()) }
+        //
+        // get '/messages', { req, res -> Page.newestMessage.toString() }
     }
 
 }

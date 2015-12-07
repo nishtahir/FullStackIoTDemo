@@ -20,6 +20,7 @@
     "polymer": "~1.2.3",
     "iron-elements": "~1.0.6",
     "paper-elements": "~1.0.6",
-    "paper-card": "PolymerElements/paper-card#~1.0.8"
+    "paper-card": "PolymerElements/paper-card#~1.0.8",
+    "iron-ajax": "PolymerElements/iron-ajax#~1.1.1"
   }
 }
