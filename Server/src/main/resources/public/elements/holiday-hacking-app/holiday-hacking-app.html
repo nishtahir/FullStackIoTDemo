@@ -20,6 +20,8 @@
 <link rel="import" href="../../bower_components/paper-button/paper-button.html">
 <link rel="import" href="../../bower_components/paper-input/paper-input.html">
 
+<link rel="import" href="../../bower_components/paper-toggle-button/paper-toggle-button.html">
+
 <link rel="import" href="holiday-hacking-style.html">
 
 <dom-module id="holiday-hacking-app">
@@ -55,13 +57,11 @@
 
                 <div class="content layout vertical">
 
-                    <paper-card heading="Move things around to begin">
-                      <div class="card-content">
-                          <paper-input label="Send value"></paper-input>
-                      </div>
-                      <div class="card-actions">
-                          <paper-button onclick="">Reset</paper-button>
-                      </div>
+                    <paper-card heading="Toggle LEDs">
+                        <div>
+                            <paper-toggle-button>LED1</paper-toggle-button>
+                            <paper-toggle-button>LED2</paper-toggle-button>
+                        </div>
                     </paper-card>
 
                     <paper-card heading="Feedback">
