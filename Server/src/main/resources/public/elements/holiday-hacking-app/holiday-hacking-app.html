@@ -6,6 +6,8 @@
 <link rel="import" href="../../bower_components/paper-toolbar/paper-toolbar.html">
 
 <link rel="import" href="../../bower_components/iron-icons/iron-icons.html">
+<link rel="import" href="../../bower_components/iron-icons/hardware-icons.html">
+<link rel="import" href="../../bower_components/iron-icons/av-icons.html">
 
 <link rel="import" href="../../bower_components/paper-icon-button/paper-icon-button.html">
 
@@ -39,48 +41,63 @@
 
             </nav>
             <div class="list layout vertical">
-                <paper-item>Controls</paper-item>
-                <paper-item>Instructions</paper-item>
-                <paper-item>About</paper-item>
-            </div>
-        </paper-header-panel>
-
-        <paper-header-panel main>
-
-            <paper-toolbar>
-                <paper-icon-button paper-drawer-toggle icon="menu"></paper-icon-button>
-                <span title>Holiday Hacking</span>
-                <span class="flex"></span>
-            </paper-toolbar>
-
-            <main>
-
-                <div class="content layout vertical">
-
-                    <paper-card heading="Toggle LEDs">
-                        <div>
-                            <paper-toggle-button>LED1</paper-toggle-button>
-                            <paper-toggle-button>LED2</paper-toggle-button>
-                        </div>
-                    </paper-card>
-
-                    <paper-card heading="Feedback">
-                        <div class="card-content">
-                            <paper-input label="Leave a comment?"></paper-input>
-                        </div>
-                        <div class="card-actions">
-                            <paper-button>Okay</paper-button>
-                            <paper-button>No thanks</paper-button>
-                        </div>
-                    </paper-card>
+                <paper-item>
+                    <paper-item-body>
+                        <div>Controls</div>
+                    </paper-item-body>
+                    <iron-icon icon="hardware:memory" item-icon></iron-icon>
+                </paper-item>
+                <paper-item>
+                    <paper-item-body>
+                        <div>Instructions</div>
+                    </paper-item-body>
+                    <iron-icon icon="av:library-books" item-icon></iron-icon>
+                </paper-item>
+                <paper-item>
+                    <paper-item-body>
+                        <div>About</div>
+                    </paper-item-body>
+                    <iron-icon icon="icons:info-outline" item-icon></iron-icon>
+                </paper-item>
                 </div>
-            </main>
+            </paper-header-panel>
 
-        </paper-header-panel>
+            <paper-header-panel main>
 
-    </paper-drawer-panel>
+                <paper-toolbar>
+                    <paper-icon-button paper-drawer-toggle icon="menu"></paper-icon-button>
+                    <span title>Holiday Hacking</span>
+                    <span class="flex"></span>
+                </paper-toolbar>
 
-</template>
+                <main>
+
+                    <div class="content layout vertical">
+
+                        <paper-card heading="Toggle LEDs">
+                            <div>
+                                <paper-toggle-button>LED1</paper-toggle-button>
+                                <paper-toggle-button>LED2</paper-toggle-button>
+                            </div>
+                        </paper-card>
+
+                        <paper-card heading="Feedback">
+                            <div class="card-content">
+                                <paper-input label="Leave a comment?"></paper-input>
+                            </div>
+                            <div class="card-actions">
+                                <paper-button>Okay</paper-button>
+                                <paper-button>No thanks</paper-button>
+                            </div>
+                        </paper-card>
+                    </div>
+                </main>
+
+            </paper-header-panel>
+
+        </paper-drawer-panel>
+
+    </template>
 </dom-module>
 
 <script src="holida
