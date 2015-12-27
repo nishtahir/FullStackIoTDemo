@@ -1,7 +1,9 @@
 Holiday Hacking
 ===============
 
-A small project hacked together to show Client, Server and Embedded device interaction. Build scripts are currently designed to work with Unix systems (Tested on Ubuntu 15). Your mileage may vary on other systems. 
+This project contains the client and Hardware components. See 
+
+A small project hacked together to show Client, Server and Embedded device interaction. Build scripts are currently designed to work with Unix systems (Tested on Ubuntu 15). Your mileage may vary on other systems.
 
 Dependencies
 ============
@@ -39,16 +41,6 @@ Usage
 Program your device using. By default, `main.c` is compiled and programmed on to the MSP430
 ```sh
 ./gradlew program
-```
-
-Start the server using
-```sh
-./gradlew Server:run
-```
-
-Navigate to the server in your browser at
-```
-http://localhost:4567
 ```
 
 Launch the client using the command

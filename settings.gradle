@@ -1,5 +1,4 @@
 include 'Client'
 include 'Hardware'
-include 'Server'
 
 rootProject.name = 'HolidayHacking'
