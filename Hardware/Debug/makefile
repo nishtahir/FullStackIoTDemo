@@ -4,10 +4,7 @@
 
 SHELL = cmd.exe
 
-CG_TOOL_ROOT := C:/ti/ccsv6/tools/compiler/ti-cgt-msp430_4.4.5
-
-GEN_OPTS__FLAG := 
-GEN_CMDS__FLAG := 
+CG_TOOL_ROOT := C:/tools/TexasInstruments/ccsv6/tools/compiler/ti-cgt-msp430_4.4.3
 
 ORDERED_OBJS += \
 "./main.obj" \
@@ -136,13 +133,13 @@ all: Hardware.out
 Hardware.out: $(OBJS) $(CMD_SRCS) $(GEN_CMDS)
 	@echo 'Building target: $@'
 	@echo 'Invoking: MSP430 Linker'
-	"C:/ti/ccsv6/tools/compiler/ti-cgt-msp430_4.4.5/bin/cl430" -vmsp --abi=eabi --use_hw_mpy=none --advice:power=all -g --define=__MSP430G2553__ --diag_warning=225 --diag_wrap=off --display_error_number --printf_support=minimal -z -m"Hardware.map" --heap_size=80 --stack_size=80 -i"C:/ti/ccsv6/ccs_base/msp430/include" -i"C:/ti/ccsv6/tools/compiler/ti-cgt-msp430_4.4.5/lib" -i"C:/ti/ccsv6/tools/compiler/ti-cgt-msp430_4.4.5/include" --reread_libs --warn_sections --diag_wrap=off --display_error_number --xml_link_info="Hardware_linkInfo.xml" --use_hw_mpy=none --rom_model -o "Hardware.out" $(ORDERED_OBJS)
+	"C:/tools/TexasInstruments/ccsv6/tools/compiler/ti-cgt-msp430_4.4.3/bin/cl430" -vmsp --abi=eabi --use_hw_mpy=none --advice:power=all -g --define=__MSP430G2553__ --diag_warning=225 --display_error_number --diag_wrap=off --printf_support=minimal -z -m"Hardware.map" --heap_size=80 --stack_size=80 -i"C:/tools/TexasInstruments/ccsv6/ccs_base/msp430/include" -i"C:/tools/TexasInstruments/ccsv6/tools/compiler/ti-cgt-msp430_4.4.3/lib" -i"C:/tools/TexasInstruments/ccsv6/tools/compiler/ti-cgt-msp430_4.4.3/include" --reread_libs --warn_sections --display_error_number --diag_wrap=off --xml_link_info="Hardware_linkInfo.xml" --use_hw_mpy=none --rom_model -o "Hardware.out" $(ORDERED_OBJS)
 	@echo 'Finished building target: $@'
 	@echo ' '
 
 Hardware.hex: $(EXE_OUTPUTS)
 	@echo 'Invoking: MSP430 Hex Utility'
-	"C:/ti/ccsv6/tools/compiler/ti-cgt-msp430_4.4.5/bin/hex430" --memwidth=8 --romwidth=8 -o "Hardware.hex" $(EXE_OUTPUTS__QUOTED)
+	"C:/tools/TexasInstruments/ccsv6/tools/compiler/ti-cgt-msp430_4.4.3/bin/hex430" --memwidth=8 --romwidth=8 -o "Hardware.hex" $(EXE_OUTPUTS__QUOTED)
 	@echo 'Finished building: $@'
 	@echo ' '
 

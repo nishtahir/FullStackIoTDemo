@@ -25,7 +25,7 @@ class WebsocketClientEndpoint {
     Session session
     Client client
 
-    WebsocketClientEndpoint(Client c) {
+    WebsocketClientEndpoint(Client client) {
         this.client = client
         this.closeLatch = new CountDownLatch(1)
     }
@@ -48,10 +48,14 @@ class WebsocketClientEndpoint {
 
     @OnWebSocketMessage
     void onMessage(String msg) {
+        println msg
         def object = new JsonSlurper().parseText(msg);
+
         assert object instanceof Map
 
-        client.updateDevice((String) object.type, (boolean) object.state)
+        String type =  object.get('type')
+        boolean state = object.get('state')
+        client.updateDevice(type, state)
     }
 
 }

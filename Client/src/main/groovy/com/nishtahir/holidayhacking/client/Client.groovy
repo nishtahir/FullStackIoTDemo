@@ -54,9 +54,12 @@ class Client {
     }
 
     def openSerialConnection(String s) {
-        SerialPort port = SerialPort.getCommPort(s);
-        port?.openPort();
-        port?.addDataListener(new SerialPortPacketListener() {
+        println "Opening port at $s"
+        SerialPort port = SerialPort.getCommPorts().find{
+          it.getSystemPortName() == s
+        }
+        port.openPort();
+        port.addDataListener(new SerialPortPacketListener() {
             @Override
             int getPacketSize() {
                 return 0
@@ -87,8 +90,10 @@ class Client {
     void updateDevice(String type, boolean state) {
         switch (type){
             case 'led1':
-                byte[] byteArray= new byte[5]
-                byteArray[0] = state ? 1 : 0
+              println "writing to led 1"
+                byte[] byteArray= new byte[2]
+                byteArray[0] = 0
+                byteArray[1] = state ? 1 : 0
                 led1.writeBytes(byteArray, 1L)
                 break;
         }
