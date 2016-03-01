@@ -1,0 +1,58 @@
+<link rel="import" href="../../bower_components/paper-styles/typography.html">
+
+<dom-module id="holiday-hacking-style">
+    <template>
+    <style>
+    :host{
+        display: block;
+    }
+    paper-header-panel[drawer]{
+    }
+    paper-header-panel[main]{
+        background-color: #F1F1F1;
+        box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.15);
+
+    }
+    paper-header-panel[main] paper-toolbar span[title]{
+        @apply(--paper-font-title);
+    }
+    paper-material{
+        background-color: #FFFFFF;
+        padding: 16px;
+    }
+
+    paper-item {
+        @apply(--paper-font-menu);
+    }
+
+    paper-card {
+        padding: 16px;
+        margin-bottom: 16px;
+    }
+
+    paper-toggle-button {
+        margin: 16px;
+        display: block;
+    }
+
+    paper-toggle-button:last-child {
+        margin-bottom: 0;
+    }
+
+    .content{
+        height: 900px;
+        padding: 24px;
+    }
+
+    .list {
+        padding-top: 12px;
+        background-color: white;
+        display: inline-block;
+        width: 240px;
+        height: 228px;
+        margin: 12px;
+    }
+
+    </style>
+</template>
+</dom-module>

@@ -1,0 +1,101 @@
+plugins {
+    id "com.moowork.node" version "0.11"
+    id 'groovy' // or 'groovy' Must be explicitly applied
+    id 'com.github.johnrengelman.shadow' version '1.2.2'
+}
+
+apply plugin: 'com.moowork.node'
+apply plugin: 'groovy'
+
+node {
+    version = '5.3.0'
+    npmVersion = '3.3.12'
+    download = true
+}
+
+repositories {
+    jcenter()
+}
+
+jar {
+    manifest {
+        attributes 'Main-Class': 'com.nishtahir.holidayhacking.Server'
+    }
+}
+
+task( startServer, dependsOn: jar, type: JavaExec ) {
+    main = 'com.nishtahir.holidayhacking.world.HelloWorld'
+    classpath = sourceSets.main.runtimeClasspath
+}
+
+task npmCacheConfig(type: NpmTask) {
+    description = "Configure the NPM cache"
+    def npmCacheDir = "${gradle.getGradleUserHomeDir()}/caches/npm"
+    outputs.files file(npmCacheDir)
+    args = [ 'config', 'set', 'cache', npmCacheDir ]
+}
+
+task npmPackages(type: NpmTask, dependsOn: npmCacheConfig) {
+    description = "Install Node.js packages"
+    args = [ 'install' ]
+    inputs.files file('package.json')
+    outputs.files file('node_modules')
+}
+
+task bowerInstall(type: NodeTask) {
+    script = file('node_modules/bower/bin/bower')
+    args = ['install']
+    inputs.files file('bower.json')
+    outputs.files file('bower_components')
+    dependsOn npmPackages
+}
+
+task bowerSync(type: Sync) {
+    from 'bower_components'
+    into "src/main/resources/public/bower_components"
+    dependsOn bowerInstall
+}
+
+task bowerPackages() {
+    dependsOn bowerSync
+}
+
+clean.delete << file('src/main/resources/public/bower_components')
+clean.delete << file('node_modules')
+clean.delete << file('bower_components')
+
+dependencies {
+
+    //Xerial sqlite
+    compile 'org.xerial:sqlite-jdbc:3.8.11.2'
+    compile 'org.xerial.thirdparty:nestedvm:1.0'
+
+    //Jackson
+    compile 'com.fasterxml.jackson.core:jackson-core:2.6.3'
+    compile 'com.fasterxml.jackson.core:jackson-databind:2.6.3'
+
+    //ORMLite
+    compile 'com.j256.ormlite:ormlite-core:4.48'
+    compile 'com.j256.ormlite:ormlite-jdbc:4.48'
+
+    //jBcrypt
+    compile 'org.mindrot:jbcrypt:0.3m'
+
+    //Simple logging facade
+    compile 'org.slf4j:slf4j-api:1.7.12'
+
+    //Joda time
+    compile 'joda-time:joda-time:2.9'
+
+    //Groovy
+    compile 'org.codehaus.groovy:groovy-all:2.4.5'
+
+    //Sparkjava
+    compile 'com.sparkjava:spark-core:2.3'
+
+    //Apache CLI
+    compile 'commons-cli:commons-cli:1.3.1'
+
+    testCompile 'org.spockframework:spock-core:1.0-groovy-2.4'
+    testCompile 'junit:junit:4.12'
+}
