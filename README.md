@@ -1,9 +1,7 @@
-Holiday Hacking
-===============
+Full stack IoT demo
+===================
 
-This project contains the client and Hardware components. See 
-
-A small project hacked together to show Client, Server and Embedded device interaction. Build scripts are currently designed to work with Unix systems (Tested on Ubuntu 15). Your mileage may vary on other systems.
+A small project aimed at demonstrating together to show Client, Server and Embedded device interaction. While some scripts were put together with a Unix environment in mind (Tested on Ubuntu 15). The vast majority of the code should be platform independent.
 
 Dependencies
 ============
@@ -26,14 +24,46 @@ $ sudo apt-get install binutils-msp430 gcc-msp430 msp430-libc mspdebug
 
 * (Optional) Gradle 2.7
 
+Server
+======
+
+## Setup
+
+All dependencies for the front end can be resolved using `bower`. A local installation
+of `npm` and `bower` can be downloaded using the relevant task in the build script
+
+```sh
+./gradlew bowerInstall
+```
+
+While building, dependencies can be copied into the project using
+
+```sh
+./gradlew bowerSync
+```
+
+
+## Package
+
+To package the application for deployment, it's important to package the application along with it's dependencies. This includes the resources needed in order to serve the front end as as other dependencies that may be required.
+
+```sh
+./gradlew bowerSync shadowJar
+```
+
+## Deploy
+
+The Embedded Jetty Server typically runs on port 4567 however the `-p` switch is used to specify
+a port for the application.
+
+```sh
+java -jar ./build/libs/HolidayHacking-Server-all.jar -p [port number]
+```
+
 Hardware
 ========
-* A computer
+* At least 1 computer
 * MSP430 Launchpad
-
-Setup
-=====
-
 
 Usage
 =====
