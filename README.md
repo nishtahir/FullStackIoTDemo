@@ -1,7 +1,7 @@
 Full stack IoT demo
 ===================
 
-A small project aimed at demonstrating together to show Client, Server and Embedded device interaction. While some scripts were put together with a Unix environment in mind (Tested on Ubuntu 15). The vast majority of the code should be platform independent.
+A small project aimed at demonstrating Client, Server and Embedded device interaction. While some scripts were put together with a Unix environment in mind (Tested on Ubuntu 15). The vast majority of the code should be platform independent.
 
 Dependencies
 ============
@@ -30,7 +30,7 @@ Server
 ## Setup
 
 All dependencies for the front end can be resolved using `bower`. A local installation
-of `npm` and `bower` can be downloaded using the relevant task in the build script
+of `npm` and `bower` can be downloaded using the relevant task in the build script.
 
 ```sh
 ./gradlew bowerInstall
@@ -41,7 +41,6 @@ While building, dependencies can be copied into the project using
 ```sh
 ./gradlew bowerSync
 ```
-
 
 ## Package
 
@@ -60,22 +59,24 @@ a port for the application.
 java -jar ./build/libs/HolidayHacking-Server-all.jar -p [port number]
 ```
 
+Client
+======
+
+Launch the client using the command
+```sh
+./gradlew Client:run
+```
+
 Hardware
 ========
 * At least 1 computer
 * MSP430 Launchpad
 
-Usage
-=====
+## Program
 
-Program your device using. By default, `main.c` is compiled and programmed on to the MSP430
+This task automates programming using `expect`. By default, `main.c` is compiled and programmed on to the device
 ```sh
 ./gradlew program
-```
-
-Launch the client using the command
-```sh
-./gradlew Client:run
 ```
 
 LICENSE
